@@ -1,0 +1,83 @@
+:root {
+  --fields-color: #F7F7F7;
+}
+/*Global rules*/
+
+html {
+  scroll-behavior: smooth;
+}
+
+/* Start Global Rules */
+
+body {
+  min-height: 100vh;
+  font-family: "Poppins", serif;
+
+
+  
+}
+@media (min-width: 992px) {
+  body {
+    overflow: hidden;
+  }
+  .talk .message{
+    width: 65%;
+  }
+}
+h1, h2 {
+  font-family: "Playfair Display", serif;
+  
+}
+h2{
+  font-weight: bold;
+
+}
+h1{
+  font-weight: 1000;
+}
+
+
+
+.talk .social a:hover {
+  color: gray !important;
+}
+
+.font-weight-bold {
+  font-weight: 700 !important;
+}
+label{
+  font-size: 14px;
+}
+form button{
+  background-color: #000;
+  border: none;
+  padding: 4px;
+}
+form button:hover{
+  background-color: rgb(50, 46, 46);
+}
+textarea {
+  resize: none;
+  /* box-sizing: border-box;  */
+  padding: 10px ;
+  height: 150px;
+  
+}
+form input , form select , form textarea{
+  background-color: var(--fields-color);
+  border:none;
+  /* margin-bottom: 25px; */
+  outline: none;
+  border: none;
+
+}
+form input , form select{
+  padding-left: 6px;
+  height: 30px;
+
+}
+.error-message {
+  color: red;
+  font-size: 0.875em;
+  margin-top: 0.25em;
+}

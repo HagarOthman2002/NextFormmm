@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>NextForm</title>
+    <!--bootstrab link-->
+    <link rel="stylesheet" href="css/bootstrap.min.css" />
+    <!--font aweosome lin-->
+    <link rel="stylesheet" href="css/all.min.css" />
+    <!--css link-->
+    <link rel="stylesheet" href="css/styles.css" />
+    <!--google fonts-->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <div
+      class="container d-flex flex-column justify-content-center align-items-center mt-5 pt-lg-5"
+    >
+      <form
+        action="
+    #"
+        method="post"
+        class="formSubmit w-75"
+      >
+        <h1 class="mx-auto text-center mb-5 fw-b">Form</h1>
+
+        <div id="page1">
+          <div class="name d-flex flex-column mb-5">
+            <label for="name" class="pb-3">Name</label>
+            <input type="text" id="name" name="name" class="border-0 p-2" />
+            <div id="nameError" class="error-message"></div>
+          </div>
+
+          <div class="email d-flex flex-column mb-5">
+            <label for="email" class="pb-3">Email</label>
+            <input type="text" id="email" name="email" class="border-0 p-2" />
+            <div id="emailError" class="error-message"></div>
+          </div>
+
+          <button
+            type="button"
+            id="nextButton"
+            class="text-white border-none border-0 p-2 w-100"
+          >
+            Next
+          </button>
+        </div>
+
+        <div class="page2">
+          <div class="age d-flex flex-column">
+            <label for="age" class="pb-3">Age</label>
+            <input type="text" id="age" name="age" class="border-0 p-2" />
+            <div id="ageError" class="error-message"></div>
+
+          </div>
+          <div class="school d-flex flex-column">
+            <label for="school" class="pb-3">School</label>
+            <input type="text" id="school" name="school" class="border-0 p-2" />
+            <div id="schoolError" class="error-message"></div>
+          </div>
+
+          <div class="buttonss d-flex ">
+            <button type="button" id="previousButton" class="text-white border-0 p-2 mt-3 me-3 ">Previous</button>
+          <button type="submit" class="text-white border-0 p-2 mt-3 ">Submit</button>
+          </div>
+          
+
+        </div>
+      </form>
+    </div>
+    <script src="index2.js"></script>
+  </body>
+</html>
