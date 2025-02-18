@@ -1,100 +1,118 @@
-console.log("hello");
-document.querySelector(".page2").style.display = "none";
+const nextButton = document.getElementById("nextButton");
+const prevButton = document.getElementById("prevButton");
+const formSubmit = document.querySelector(".formSubmit");
+
+const nameField = document.getElementById("name");
+const secondNameField = document.getElementById("secondName");
+const emailField = document.getElementById("email");
+const ageField = document.getElementById("age");
+const schoolField = document.getElementById("school");
+
+const nameError = document.getElementById("nameError");
+const secondNameError = document.getElementById("secondNameError");
+const emailError = document.getElementById("emailError");
+const ageError = document.getElementById("ageError");
+const schoolError = document.getElementById("schoolError");
+
+const page1 = document.getElementById("page1");
+const page2 = document.querySelector(".page2");
 
 
-document.getElementById("nextButton").addEventListener("click", function () {
-  const name = document.getElementById("name").value.trim();
-  const email = document.getElementById("email").value.trim();
-
-  if (name === "") {
-    showError("nameError", "Name is required.");
-    return;
-  } else {
-    clearError("nameError");
-  }
-
-  if (email === "") {
-    showError("emailError", "Email is required.");
-    return;
-  } else if (!validateEmail(email)) {
-    showError("emailError", "Please enter a valid email address.");
-    return;
-  } else {
-    clearError("emailError");
-  }
-
-
-  document.getElementById("page1").style.display = "none";
-  document.querySelector(".page2").style.display = "block";
-});
-
-
-document.getElementById("previousButton").addEventListener("click", function () {
-  document.querySelector(".page2").style.display = "none";
-  document.getElementById("page1").style.display = "block";
-});
-
-
-document.querySelector(".formSubmit").addEventListener("submit", function (event) {
-  event.preventDefault(); 
-  const age = document.getElementById("age").value.trim();
-  const school = document.getElementById("school").value.trim();
+nextButton.addEventListener("click", function () {
+  const name = nameField.value.trim();
+  const secondName = secondNameField.value.trim();
 
   let isValid = true;
 
-  if (age === "" || isNaN(age) || age <= 0) {
-    showError("ageError", "Please enter a valid age.");
+
+  if (name === "") {
+    showError(nameError, "Name is required.");
     isValid = false;
   } else {
-    clearError("ageError");
+    clearError(nameError);
+  }
+
+  if (secondName === "") {
+    showError(secondNameError, "Second Name is required.");
+    isValid = false;
+  } else {
+    clearError(secondNameError);
+  }
+
+
+  if (isValid) {
+    page1.style.display = "none"; 
+    page2.style.display = "block"; 
+
+
+    prevButton.style.display = "block";
+  }
+});
+
+
+prevButton.addEventListener("click", function () {
+  page2.style.display = "none";
+  page1.style.display = "block"; 
+
+ 
+  nextButton.style.display = "block";
+  prevButton.style.display = "none"; 
+});
+
+
+formSubmit.addEventListener("submit", function (event) {
+  event.preventDefault();
+  const email = emailField.value.trim();
+  const age = ageField.value.trim();
+  const school = schoolField.value.trim();
+
+  let isValid = true;
+
+
+  if (email === "") {
+    showError(emailError, "Email is required.");
+    isValid = false;
+  } else if (!validateEmail(email)) {
+    showError(emailError, "Please enter a valid email address.");
+    isValid = false;
+  } else {
+    clearError(emailError);
+  }
+
+
+  if (age === "" || isNaN(age) || age <= 0) {
+    showError(ageError, "Please enter a valid age.");
+    isValid = false;
+  } else {
+    clearError(ageError);
   }
 
 
   if (school === "") {
-    showError("schoolError", "School name is required.");
+    showError(schoolError, "School name is required.");
     isValid = false;
   } else {
-    clearError("schoolError");
+    clearError(schoolError);
   }
 
 
   if (isValid) {
     alert("Form submitted successfully!");
-
+ 
   }
 });
 
 
-document.getElementById("age").addEventListener("blur", function () {
-  if (this.value.trim() !== "" && !isNaN(this.value.trim()) && this.value.trim() > 0) {
-    clearError("ageError");
-    this.style.border = "1px solid green";
-  } else {
-    showError("ageError", "Please enter a valid age.");
-    this.style.border = "1px solid red";
-  }
-});
-
-document.getElementById("school").addEventListener("blur", function () {
-  if (this.value.trim() !== "") {
-    clearError("schoolError");
-    this.style.border = "1px solid green";
-  } else {
-    showError("schoolError", "School name is required.");
-    this.style.border = "1px solid red";
-  }
-});
-
-
-function showError(elementId, message) {
-  const errorElement = document.getElementById(elementId);
-  errorElement.textContent = message;
-  errorElement.style.color = "red";
+function showError(element, message) {
+  element.textContent = message;
+  element.style.color = "red";
 }
 
-function clearError(elementId) {
-  document.getElementById(elementId).textContent = "";
+
+function clearError(element) {
+  element.textContent = "";
 }
+
 
 function validateEmail(email) {
   const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
